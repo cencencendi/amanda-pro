@@ -37,11 +37,11 @@ class DosingCycle:
     def __init__(
         self,
         insert_sensor_record,
+        plc,
         target_and_tolerance=DosingTargetAndTolerance,
         setting_mode=SettingMode,
         irrigation_model=IrrigationModel,
         sensor_record=SensorRecord,
-        plc=PLC(),
     ) -> None:
         self.target_and_tolerance = target_and_tolerance
         self.setting_mode = setting_mode
@@ -68,8 +68,7 @@ class DosingCycle:
             self.dosing_check()
 
     def dosing_check(self):
-        # is_water_tank_full = self.plc.read_capacitor(39)
-        is_water_tank_full = False
+        is_water_tank_full = self.plc.read_capacitor(39)
         self.ec_lower = (
             self.last_target_and_tolerance.ec_target - self.last_target_and_tolerance.ec_tolerance
         )
