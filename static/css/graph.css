@@ -1,0 +1,35 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.box {
+  max-height: 800px;
+  max-width: 1280px;
+  background-color: rgba(241, 241, 241, 1);
+}
+
+.container-fluid .amanda-text {
+  font-size: 3rem;
+  font-weight: 550;
+  color: white;
+}
+
+.bg-green-amanda {
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.fill-white {
+  fill: white;
+}
+
+.control-container {
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+input:checked + label {
+  background-color: rgba(15, 177, 112, 1);
+  color: white;
+}

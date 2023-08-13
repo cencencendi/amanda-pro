@@ -1,0 +1,7 @@
+django==4.2.3
+geocoder
+APScheduler
+minimalmodbus
+pyModbusTCP
+pyModbus==2.5.0
+Twisted

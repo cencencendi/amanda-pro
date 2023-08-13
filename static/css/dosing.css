@@ -1,0 +1,183 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.box {
+  max-height: 800px;
+  max-width: 1280px;
+  background-color: rgba(241, 241, 241, 1);
+}
+
+.container-fluid .amanda-text {
+  font-size: 3rem;
+  font-weight: 550;
+  color: white;
+}
+.nav-link {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #e7e7e7;
+  color: #5d5d5d;
+  padding: 1rem 2rem;
+  min-width: 275px;
+}
+
+.nav-link:hover,
+.nav-link:hover svg {
+  color: white;
+  fill: white;
+  transition: 100ms;
+}
+
+.active {
+  color: white;
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.nav-link.active svg {
+  fill: white;
+}
+
+.nav-link svg {
+  fill: #5d5d5d;
+}
+
+.border-green {
+  border: 4px solid rgba(15, 177, 112, 1);
+}
+
+.control-container {
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.dosing-container {
+  grid-template-areas:
+    'mode schedule'
+    'target schedule';
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 0.4fr 1fr;
+}
+
+#dosing-mode-control-container {
+  grid-area: mode;
+}
+
+#dosing-target-control-container {
+  grid-area: target;
+}
+
+#dosing-schedule-container {
+  grid-area: schedule;
+}
+
+.label-dosing-mode {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px;
+  width: 136px;
+  text-align: center;
+}
+
+#dosing-control-mode + #manual-dosing,
+#dosing-control-mode + #auto-dosing {
+  background-color: rgba(215, 215, 215, 1);
+  color: rgba(155, 155, 155, 1);
+}
+
+.switch {
+  appearance: none;
+  width: 80px;
+  height: 40px;
+  background-color: rgba(215, 215, 215, 1);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+  transition: 200ms;
+  position: relative;
+  cursor: pointer;
+}
+
+.switch:checked {
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.switch::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  left: 0;
+  background-color: white;
+  transform: scale(0.75);
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.05);
+  transition: 200ms;
+}
+
+.switch:checked::before {
+  left: 40px;
+}
+
+.switch:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.target-and-tolerance {
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1.2fr 1fr 1fr;
+}
+
+.background-green {
+  background-color: rgba(15, 177, 112, 1);
+  color: white;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
+  transition: 200ms;
+}
+
+.background-green:hover {
+  transform: scale(0.95);
+  background-color: rgba(15, 177, 112, 1);
+  color: white;
+}
+
+#ec-target-min,
+#ec-target-plus,
+#ec-tolerance-min,
+#ec-tolerance-plus,
+#ph-target-min,
+#ph-target-plus,
+#ph-tolerance-min,
+#ph-tolerance-plus,
+#add-drip-duration-min,
+#add-drip-duration-plus {
+  cursor: pointer;
+}
+
+.fill-grey {
+  fill: rgba(155, 155, 155, 1);
+}
+
+.bg-green-amanda {
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.fill-white {
+  fill: white;
+}
+
+.padding-container-control {
+  padding: 1.85rem 2.6rem;
+}
+
+.fill-green {
+  fill: rgba(15, 177, 112, 1);
+}
+
+.fill-red {
+  fill: red;
+}

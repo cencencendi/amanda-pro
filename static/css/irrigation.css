@@ -1,0 +1,175 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.box {
+  max-height: 800px;
+  max-width: 1280px;
+  background-color: rgba(241, 241, 241, 1);
+}
+
+.container-fluid .amanda-text {
+  font-size: 3rem;
+  font-weight: 550;
+  color: white;
+}
+.nav-link {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #e7e7e7;
+  color: #5d5d5d;
+  padding: 1rem 2rem;
+  min-width: 275px;
+}
+
+.nav-link:hover,
+.nav-link:hover svg {
+  color: white;
+  fill: white;
+  transition: 100ms;
+}
+
+.active {
+  color: white;
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.nav-link.active svg {
+  fill: white;
+}
+
+.nav-link svg {
+  fill: #5d5d5d;
+}
+
+.border-green {
+  border: 4px solid rgba(15, 177, 112, 1);
+}
+
+.label-irrigation-mode {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px;
+  width: 136px;
+  text-align: center;
+}
+
+#irrigation-control-mode + #manual-irrigation,
+#irrigation-control-mode + #auto-irrigation {
+  background-color: rgba(215, 215, 215, 1);
+  color: rgba(155, 155, 155, 1);
+}
+
+.control-container {
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.switch {
+  appearance: none;
+  width: 80px;
+  height: 40px;
+  background-color: rgba(215, 215, 215, 1);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+  transition: 200ms;
+  position: relative;
+  cursor: pointer;
+}
+
+.switch:checked {
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.switch::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  left: 0;
+  background-color: white;
+  transform: scale(0.75);
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.05);
+  transition: 200ms;
+}
+
+.switch:checked::before {
+  left: 40px;
+}
+
+.switch:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.irrigation-container {
+  grid-template-areas:
+    'mode illustration'
+    'control illustration';
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 1.4fr;
+}
+
+#irrigation-mode-control-container {
+  grid-area: mode;
+}
+
+#irrigation-control-container {
+  grid-area: control;
+}
+
+#irrigation-illustration-container {
+  grid-area: illustration;
+}
+
+#drain-valve-icon {
+  left: 2.5%;
+  top: 84%;
+}
+
+#plant-pump-icon {
+  left: 41.2%;
+  top: 61%;
+}
+
+#water-supply-pump-icon {
+  left: 10%;
+  top: 48%;
+}
+
+#sensor-pump-icon {
+  left: 56.8%;
+  top: 26%;
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.fill-grey {
+  fill: rgba(155, 155, 155, 1);
+}
+
+.bg-green-amanda {
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.fill-white {
+  fill: white;
+}
+
+.padding-container-control {
+  padding: 1.85rem 2.6rem;
+}
+
+.fill-green {
+  fill: rgba(15, 177, 112, 1);
+}
+
+.fill-red {
+  fill: red;
+}

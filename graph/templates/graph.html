@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/graph.css' %}" />
+
+    <!-- Chart JS -->
+    <script src="{% static 'js/chart.min.js' %}"></script>
+
+    <title>Graph</title>
+  </head>
+  <body>
+    {% csrf_token %}
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <!-- Leaf SVG -->
+      <symbol
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        viewBox="0.00384521484375 -0.0016629695892333984 73.978515625 65.77386474609375"
+        id="logo"
+      >
+        <path
+          d="M 3.831581115722656 1.247314214706421 C 4.550888061523438 -0.3582777678966522 6.606048583984375 -0.4225014448165894 7.466651916503906 1.093177437782288 C 11.44851303100586 8.01648998260498 18.57734680175781 12.3323221206665 26.72091293334961 12.3323221206665 L 36.99670791625977 12.3323221206665 C 50.61213684082031 12.3323221206665 61.65861511230469 23.3787956237793 61.65861511230469 36.99421691894531 C 61.65861511230469 37.89334487915039 61.55585861206055 38.75394439697266 61.46594619750977 39.62738418579102 C 53.27099990844727 33.75734329223633 41.44098663330078 28.77358055114746 24.66575622558594 28.77358055114746 C 23.53541946411133 28.77358055114746 22.61059951782227 29.69840431213379 22.61059951782227 30.82873725891113 C 22.61059951782227 31.95907783508301 23.53541946411133 32.88390350341797 24.66575622558594 32.88390350341797 C 56.95744323730469 32.88390350341797 70.64993286132813 52.67763900756836 73.68129730224609 60.11474227905273 C 74.529052734375 62.20843124389648 73.52716064453125 64.59754943847656 71.43346405029297 65.45814514160156 C 69.32692718505859 66.33158874511719 66.93780517578125 65.31685638427734 66.06436157226563 63.23600769042969 C 65.87168884277344 62.77359771728516 63.37981033325195 57.0833740234375 56.82899475097656 51.59867477416992 C 52.66729736328125 57.23751831054688 44.75493240356445 62.61946487426758 34.3635368347168 61.51480865478516 C 14.19728851318359 60.05051803588867 0.00384521484375 41.96512603759766 0.00384521484375 19.82080078125 C 0.00384521484375 13.37274646759033 1.391082763671875 6.693481922149658 3.831581115722656 1.247313141822815 Z"
+        />
+      </symbol>
+
+      <!-- Dashboard SVG -->
+      <symbol xmlns="http://www.w3.org/2000/svg" id="home" viewBox="0 0 16 16">
+        <path
+          d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"
+        />
+      </symbol>
+    </svg>
+    <!-- The end of stored svgs -->
+
+    <!-- Content Start Here -->
+    <div class="container-fluid p-0 box m-0">
+      <!-- Header Start Here -->
+      <div class="container-fluid bg-green-amanda">
+        <div class="row align-items-center justify-content-between">
+          <!-- Leaf SVG and "SETTING" text-->
+          <div class="col ps-3 d-flex justify-content-start align-items-center">
+            <svg class="me-3 mt-3 mb-3 fill-white" width="90" height="70"><use xlink:href="#logo" class="fill-white" /></svg>
+            <div class="amanda-text">GRAPH</div>
+          </div>
+
+          <!-- Back To Dashboard Button -->
+          <div class="col d-flex justify-content-end align-items-center pe-5">
+            <a
+              type="button"
+              class="btn btn-light rounded-pill py-3 px-4 d-flex justify-content-center align-items-center fs-2 fw-bold"
+              href="{% url 'dashboard_app:dashboard' %}"
+            >
+              <svg class="me-3" width="38" height="38"><use xlink:href="#home" /></svg>DASHBOARD
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Header End Here -->
+
+      <!-- Graph Container Start Here -->
+      <div class="container-fluid p-4">
+        <div class="row mt-2 mb-3 mx-0 g-3 container rounded-4 p-4 control-container">
+          <div class="col my-0">
+            <div class="form-check ps-0">
+              <input type="checkbox" onclick="postSelectedData(event)" class="form-check-input d-none" id="include-ec" />
+              <label class="form-check-label text-center fw-bold border border-1 rounded-4 w-100 p-3" for="include-ec">EC</label>
+            </div>
+          </div>
+          <div class="col my-0">
+            <div class="form-check ps-0">
+              <input type="checkbox" onclick="postSelectedData(event)" class="form-check-input d-none" id="include-do" />
+              <label class="form-check-label text-center fw-bold border border-1 rounded-4 w-100 p-3" for="include-do">DO</label>
+            </div>
+          </div>
+          <div class="col my-0">
+            <div class="form-check ps-0">
+              <input type="checkbox" onclick="postSelectedData(event)" class="form-check-input d-none" id="include-ph" />
+              <label class="form-check-label text-center fw-bold border border-1 rounded-4 w-100 p-3" for="include-ph">pH</label>
+            </div>
+          </div>
+          <div class="col my-0">
+            <div class="form-check ps-0">
+              <input type="checkbox" onclick="postSelectedData(event)" class="form-check-input d-none" id="include-water-temp" />
+              <label class="form-check-label text-center fw-bold border border-1 rounded-4 w-100 p-3" for="include-water-temp">Temperature</label>
+            </div>
+          </div>
+          <div class="col my-0">
+            <div class="form-check ps-0">
+              <input type="checkbox" onclick="postSelectedData(event)" class="form-check-input d-none" id="include-kwh" />
+              <label class="form-check-label text-center fw-bold border border-1 rounded-4 w-100 p-3" for="include-kwh">kWh</label>
+            </div>
+          </div>
+          <div class="col my-0">
+            <div class="form-check ps-0">
+              <input type="checkbox" onclick="postSelectedData(event)" class="form-check-input d-none" id="include-co2" />
+              <label class="form-check-label text-center fw-bold border border-1 rounded-4 w-100 p-3" for="include-co2">CO<sub>2</sub></label>
+            </div>
+          </div>
+        </div>
+        <div class="row my-4 mx-0">
+          <div class="container rounded-4 control-container">
+            <div class="col-3 offset-md-9">
+              <div class="form-floating mt-3">
+                <select class="form-select" id="select-date" onchange="postSelectedData(event)"></select>
+                <label for="select-date">Select a date</label>
+              </div>
+            </div>
+            <div id="forChart">
+              <canvas class="mb-4 w-100" id="myChart" height="400"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Graph Container End Here -->
+    </div>
+    <!-- Content End Here -->
+
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Custom Script -->
+    <script src="{% static 'js/graph.js' %}"></script>
+  </body>
+</html>

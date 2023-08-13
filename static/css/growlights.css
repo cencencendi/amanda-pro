@@ -1,0 +1,147 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.box {
+  max-height: 800px;
+  max-width: 1280px;
+  background-color: rgba(241, 241, 241, 1);
+}
+
+.container-fluid .amanda-text {
+  font-size: 3rem;
+  font-weight: 550;
+  color: white;
+}
+.nav-link {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #e7e7e7;
+  color: #5d5d5d;
+  padding: 1rem 2rem;
+  min-width: 275px;
+}
+
+.nav-link:hover,
+.nav-link:hover svg {
+  color: white;
+  fill: white;
+  transition: 100ms;
+}
+
+.active {
+  color: white;
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.nav-link.active svg {
+  fill: white;
+}
+
+.nav-link svg {
+  fill: #5d5d5d;
+}
+
+.border-green {
+  border: 4px solid rgba(15, 177, 112, 1);
+}
+
+.control-container {
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.label-growlight-mode {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px;
+  width: 136px;
+  text-align: center;
+}
+
+#growlight-control-mode + #manual-growlight,
+#growlight-control-mode + #auto-growlight {
+  background-color: rgba(215, 215, 215, 1);
+  color: rgba(155, 155, 155, 1);
+}
+
+.switch {
+  appearance: none;
+  width: 100px;
+  height: 50px;
+  background-color: rgba(215, 215, 215, 1);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+  transition: 200ms;
+  position: relative;
+  cursor: pointer;
+}
+
+.switch:checked {
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.switch::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  left: 0;
+  background-color: white;
+  transform: scale(0.75);
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.05);
+  transition: 200ms;
+}
+
+.switch:checked::before {
+  left: 50px;
+}
+
+.switch:disabled,
+input[type='time']:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.d-grid {
+  display: grid;
+  gap: 47px 20px;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1.5fr 2fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  /* justify-items: stretch; */
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fill-grey {
+  fill: rgba(155, 155, 155, 1);
+}
+
+.bg-green-amanda {
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.fill-white {
+  fill: white;
+}
+
+.padding-container-control {
+  padding: 1.85rem 2.6rem;
+}
+
+.fill-green {
+  fill: rgba(15, 177, 112, 1);
+}
+
+.fill-red {
+  fill: red;
+}

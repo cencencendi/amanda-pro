@@ -1,0 +1,106 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.box {
+  max-height: 800px;
+  max-width: 1280px;
+  background-color: rgba(241, 241, 241, 1);
+}
+
+.container-fluid .amanda-text {
+  font-size: 3rem;
+  font-weight: 550;
+  color: white;
+}
+.nav-link {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #e7e7e7;
+  color: #5d5d5d;
+  padding: 1rem 2rem;
+  min-width: 275px;
+}
+
+.nav-link:hover,
+.nav-link:hover svg {
+  color: white;
+  fill: white;
+  transition: 100ms;
+}
+
+.active {
+  color: white;
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.nav-link.active svg {
+  fill: white;
+}
+
+.nav-link svg {
+  fill: #5d5d5d;
+}
+
+.border-green {
+  border: 4px solid rgba(15, 177, 112, 1);
+}
+
+.control-container {
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.card {
+  --bs-card-spacer-y: 0.5rem;
+  --bs-card-spacer-x: 0.5rem;
+  border: 6px solid rgba(15, 177, 112, 1);
+  border-top-left-radius: 27px;
+  border-top-right-radius: 27px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.calibration-btn {
+  border-bottom-left-radius: 27px;
+  border-bottom-right-radius: 27px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.grey {
+  color: rgba(155, 155, 155, 1);
+}
+
+.card .card-body .card-text {
+  font-size: 90px;
+  font-weight: 700;
+}
+
+.fill-grey {
+  fill: rgba(155, 155, 155, 1);
+}
+
+.bg-green-amanda {
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.fill-white {
+  fill: white;
+}
+
+.padding-container-control {
+  padding: 1.85rem 2.6rem;
+}
+
+.fill-green {
+  fill: rgba(15, 177, 112, 1);
+}
+
+.fill-red {
+  fill: red;
+}

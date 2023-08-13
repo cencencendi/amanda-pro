@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.box {
+  max-height: 800px;
+  max-width: 1280px;
+}
+
+.container-fluid .amanda-text {
+  font-size: 3rem;
+  font-weight: 550;
+  color: white;
+}
+
+.card {
+  --bs-card-spacer-y: 0.5rem;
+  --bs-card-spacer-x: 0.5rem;
+  border: 6px solid rgba(15, 177, 112, 1);
+  border-radius: 27px;
+}
+
+.grey {
+  color: rgba(155, 155, 155, 1);
+}
+
+.card .card-body .card-text {
+  font-size: 90px;
+  font-weight: 700;
+}
+
+.sensor-alert {
+  animation: blinker 0.6s infinite ease-in-out alternate;
+  background-color: rgba(255, 240, 240, 1);
+}
+
+@keyframes blinker {
+  from {
+    border-color: rgba(244, 63, 57, 1);
+  }
+  to {
+    border-color: rgba(255, 240, 240, 1);
+  }
+}
+
+.fill-grey {
+  fill: rgba(155, 155, 155, 1);
+}
+
+.bg-green-amanda {
+  background-color: rgba(15, 177, 112, 1);
+}
+
+.fill-white {
+  fill: white;
+}
