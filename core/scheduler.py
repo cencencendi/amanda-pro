@@ -15,7 +15,7 @@ omron_plc = PLC()
 insert_sensor_record = InsertSensorRecord(
     plc=omron_plc, arduino=arduino_mega, thera=thera_instrument
 )
-dosing_cycle = DosingCycle(insert_sensor_record=insert_sensor_record)
+dosing_cycle = DosingCycle(insert_sensor_record=insert_sensor_record, plc=omron_plc)
 growlights_control = GrowlightsControl(plc=omron_plc)
 watering_plant = Watering(plc=omron_plc)
 

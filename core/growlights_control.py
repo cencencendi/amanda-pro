@@ -51,7 +51,7 @@ class GrowlightsControl:
             is_now_between_schedule = self.is_between(
                 row.first_cycle_start, row.first_cycle_end, self.now
             ) or self.is_between(row.second_cycle_start, row.second_cycle_end, self.now)
-            print(f'Growlight-{idx} is {"on" if is_now_between_schedule else "off"}')
+            # print(f'Growlight-{idx} is {"on" if is_now_between_schedule else "off"}')
             self.plc.write_plc(id=15 + idx, switch=is_now_between_schedule)
 
     def is_between(self, start, end, now):
