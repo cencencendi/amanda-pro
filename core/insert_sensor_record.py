@@ -50,7 +50,7 @@ class InsertSensorRecord:
         # Get data from arduino
         print("get data sensor")
         recorded_data = list(self.arduino.get_all()["data"].values())
-        recorded_data.append([self.thera.get_data_kwh(), get_data_co2()])
+        recorded_data.extend([self.thera.get_data_kwh(), get_data_co2()])
         time.sleep(self.sensing_time / 2)
 
         self.plc.write_plc(id=3, switch=False)
