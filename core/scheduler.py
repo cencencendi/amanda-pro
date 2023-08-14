@@ -27,6 +27,8 @@ def start(register):
         return
 
     print(">> Scheduler started!")
+    # Turn the system on
+    omron_plc.write_plc(id=0, switch=1)
 
     watering_thread = threading.Thread(target=lambda: watering_plant.check_time(dosing_cycle))
     scheduler.add_job(
@@ -40,5 +42,7 @@ def start(register):
 
 
 def stop():
+        # Turn the system off
+    omron_plc.write_plc(id=0, switch=0)
     print("stopped")
     scheduler.shutdown()

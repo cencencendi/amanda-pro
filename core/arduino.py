@@ -1,5 +1,6 @@
 import serial.tools.list_ports
 import json
+import re
 
 
 class Arduino:
@@ -35,10 +36,10 @@ class Arduino:
 
     def find_serial_port(self):
         ports = serial.tools.list_ports.comports()
-        for port in ports:
-            if "USB" in port.description.split(" "):
-                return port.device
-        return None
+        pattern = r'ttyACM\d+'
+
+        arduino_ports = [port.device for port in ports if re.search(pattern, port.device)]
+        return arduino_ports[0]
 
     def get_all(self):
         command = json.dumps({"cmd": "get_all"})
