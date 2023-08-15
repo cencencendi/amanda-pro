@@ -98,7 +98,7 @@ class PLC:
             if read_holding_register:
                 return read_holding_register[0]
             else:
-                return print(f"Error read register {register}")
+                print(f"Error read register {register}")
 
         except Exception as e:
             print(e)

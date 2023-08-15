@@ -68,7 +68,8 @@ class DosingCycle:
             self.dosing_check()
 
     def dosing_check(self):
-        is_water_tank_full = self.plc.read_capacitor(39)
+        is_water_tank_full = self.plc.read_capacitor(38)
+
         self.ec_lower = (
             self.last_target_and_tolerance.ec_target - self.last_target_and_tolerance.ec_tolerance
         )

@@ -61,9 +61,6 @@ class Watering:
                 self.time_to_watering()
 
     def time_to_watering(self):
-        is_water_tank_not_full = self.plc.read_capacitor(38)
-        if not is_water_tank_not_full:
-            return
 
         # get the watering_time and duration
         watering_time = next(item[1] for item in self.is_now_between_schedule if item[0])
