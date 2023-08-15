@@ -1,22 +1,12 @@
 from django.db import models
-from datetime import datetime
-from decimal import Decimal
+from django.utils import timezone
 
 # Create your models here.
 
-MODE_STATE = (
-    (1, 'AUTO'),
-    (0, 'MANUAL')
-)
-BUTTON_STATE = (
-    (0, 'OFF'),
-    (1, 'ON')
-)
+MODE_STATE = ((1, "AUTO"), (0, "MANUAL"))
+BUTTON_STATE = ((0, "OFF"), (1, "ON"))
 
-DONE_STATE = (
-    (0, 'NOT DONE'),
-    (1, 'DONE')
-)
+DONE_STATE = ((0, "NOT DONE"), (1, "DONE"))
 
 # ================================================== Setting Mode ================================================
 
@@ -28,18 +18,19 @@ class SettingMode(models.Model):
 
 
 # ========================================= Growlight Model (Times and Switches) ================================================
-'''
+"""
 Growlight 1: is the Object 1 or Row 1 in the database 
 Growlight 2: is the Object 2 or Row 2 in the database
-'''
+"""
 
 
 class GrowlightsModel(models.Model):
     switch = models.IntegerField(choices=BUTTON_STATE, default=0)
-    first_cycle_start = models.TimeField(default=datetime.now().time())
-    first_cycle_end = models.TimeField(default=datetime.now().time())
-    second_cycle_start = models.TimeField(default=datetime.now().time())
-    second_cycle_end = models.TimeField(default=datetime.now().time())
+    first_cycle_start = models.TimeField(default=timezone.now().time)
+    first_cycle_end = models.TimeField(default=timezone.now().time)
+    second_cycle_start = models.TimeField(default=timezone.now().time)
+    second_cycle_end = models.TimeField(default=timezone.now().time)
+
 
 # ============================================== Irrigation Model (Switches) ===================================================
 
@@ -53,12 +44,12 @@ class IrrigationModel(models.Model):
 
 
 # ============================================== Dosing Model (Schedules and Switches) ===================================================
-'''
+"""
 The dosing model database will be divided into 2 different classes:
 1. DosingTargetAndTolerance
 2. DosingSwitches
 3. WateringSchedule
-'''
+"""
 
 
 class DosingTargetAndTolerance(models.Model):
@@ -75,5 +66,5 @@ class DosingSwitches(models.Model):
 
 class WateringSchedule(models.Model):
     name = models.TextField(null=True, max_length=15)
-    watering_time = models.TimeField(default=datetime.now().time())
+    watering_time = models.TimeField(default=timezone.now().time)
     duration = models.IntegerField(default=0)

@@ -39,9 +39,11 @@ def fetch_data(url, api_key):
 def get_data_co2():
     api_url = "https://api.pulsegrow.com/devices/19635/recent-data"
     api_key = "4w7Ax75tSESR5J71vBtNhH9ADQbbAMThF0oHPEaMYFvEjBr"
+
     try:
         data = fetch_data(api_url, api_key)
         if data:
+            # pulse_data = [data["temperatureC"], data["humidityRh"], data["co2"]]
             return data["co2"]
     except Exception as e:
         print(f"Exception caught: {e}")

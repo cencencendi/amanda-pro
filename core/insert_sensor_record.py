@@ -53,8 +53,13 @@ class InsertSensorRecord:
 
         water_temp, ph, ec, do = list(self.arduino.get_all()["data"].values())
         try:
-            latest_valid_data_set = SensorRecord.objects.exclude(ec=0).exclude(ph=0).exclude(water_temp=0).exclude(
-                do=0).exclude(co2=0)
+            latest_valid_data_set = (
+                SensorRecord.objects.exclude(ec=0)
+                .exclude(ph=0)
+                .exclude(water_temp=0)
+                .exclude(do=0)
+                .exclude(co2=0)
+            )
             latest_valid_data = latest_valid_data_set[len(latest_valid_data_set) - 1]
 
             if float(ph) == 0:
@@ -68,13 +73,10 @@ class InsertSensorRecord:
         except:
             print("no data yet")
 
-        self.recorded_data.extend([ec, 
-                                   ph, 
-                                   do, 
-                                   water_temp, 
-                                   self.thera.get_data_kwh(), 
-                                   get_data_co2()])
-        
+        self.recorded_data.extend(
+            [ec, ph, do, water_temp, self.thera.get_data_kwh(), get_data_co2()]
+        )
+
         time.sleep(self.sensing_time / 2)
 
         self.plc.write_plc(id=3, switch=False)
