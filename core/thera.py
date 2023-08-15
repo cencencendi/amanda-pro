@@ -26,7 +26,7 @@ class Thera:
         energy_consumption = thera_instance.get_data_kwh()
         print("Energy Consumption (kWh):", energy_consumption)"""
 
-    def __init__(self, slave_address=1) -> None:
+    def __init__(self, slave_address=8) -> None:
         self.slave_address = slave_address
         try:
             self.serial_port_thera = self.find_serial_port()
@@ -53,9 +53,9 @@ class Thera:
     def find_serial_port(self):
         ports = list_ports.comports()
         for port in ports:
-            if "Ser!" in port.description.split("-"):
+            if "FT232R" in port.description.split(" "):
                 return port.device
         return ""
 
     def get_data_kwh(self):
-        return self.thera_instrument.read_register(0, functioncode=3) * 0.1
+        return self.thera_instrument.read_register(13, functioncode=3) * 0.1

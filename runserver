@@ -1,0 +1,9 @@
+#!/bin/bash
+# sudo chmod 666 /dev/ttyACM0
+export DEBUG=False
+export REGISTER=False
+cd /home/inastek/projects-ruko/
+source ruko-venv/bin/activate
+cd amanda-pro
+
+exec python3 manage.py runserver --noreload

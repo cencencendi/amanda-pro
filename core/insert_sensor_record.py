@@ -36,6 +36,7 @@ class InsertSensorRecord:
         self.arduino = arduino
         self.sensing_time = 30
         self.thera = thera
+        self.recorded_data = []
 
     def record_time(self):
         now = datetime.combine(datetime.min, datetime.now().time())
@@ -49,8 +50,31 @@ class InsertSensorRecord:
 
         # Get data from arduino
         print("get data sensor")
-        recorded_data = list(self.arduino.get_all()["data"].values())
-        recorded_data.extend([self.thera.get_data_kwh(), get_data_co2()])
+
+        water_temp, ph, ec, do = list(self.arduino.get_all()["data"].values())
+        try:
+            latest_valid_data_set = SensorRecord.objects.exclude(ec=0).exclude(ph=0).exclude(water_temp=0).exclude(
+                do=0).exclude(co2=0)
+            latest_valid_data = latest_valid_data_set[len(latest_valid_data_set) - 1]
+
+            if float(ph) == 0:
+                ph = latest_valid_data.ph
+            if float(water_temp) == 0:
+                water_temp = latest_valid_data.water_temp
+            if float(do) == 0:
+                do = latest_valid_data.do
+            if float(ec) == 0:
+                ec = latest_valid_data.ec
+        except:
+            print("no data yet")
+
+        self.recorded_data.extend([ec, 
+                                   ph, 
+                                   do, 
+                                   water_temp, 
+                                   self.thera.get_data_kwh(), 
+                                   get_data_co2()])
+        
         time.sleep(self.sensing_time / 2)
 
         self.plc.write_plc(id=3, switch=False)
@@ -59,13 +83,13 @@ class InsertSensorRecord:
         # Save the recorded data to database
         add_sensor_record = SensorRecord(
             id=SensorRecord.objects.count() + 1,
-            ec=recorded_data[0],
-            ph=recorded_data[1],
-            do=recorded_data[2],
-            water_temp=recorded_data[3],
-            kwh=recorded_data[4],
-            co2=recorded_data[5],
+            ec=self.recorded_data[0],
+            ph=self.recorded_data[1],
+            do=self.recorded_data[2],
+            water_temp=self.recorded_data[3],
+            kwh=self.recorded_data[4],
+            co2=self.recorded_data[5],
         )
         add_sensor_record.save()
 
-        return recorded_data
+        return self.recorded_data
