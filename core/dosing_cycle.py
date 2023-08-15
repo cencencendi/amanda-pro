@@ -101,7 +101,7 @@ class DosingCycle:
             self.plc.write_plc(id=20, switch=False)
             return
 
-        self.stirring()
+        # self.stirring()
         self.adjust_nutrient()
 
     def stirring(self):
