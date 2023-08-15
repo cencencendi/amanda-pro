@@ -187,9 +187,6 @@ function updateChart(data, checkedValue, selectedDate) {
   };
 
   // Just for better-looking chart
-  const averageData = data.reduce((total, num) => total + num, 0) / data.length;
-  myChart.options.scales.y.min = Math.min(...data) - averageData / 5;
-  myChart.options.scales.y.max = Math.max(...data) + averageData / 5;
   myChart.data.datasets = [newDataset];
   myChart.options.scales.y.title.text = ((checkedValue) => {
     if (checkedValue == 'ec') {
