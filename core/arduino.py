@@ -42,14 +42,17 @@ class Arduino:
         return arduino_ports[0]
 
     def get_all(self):
-        command = json.dumps({"cmd": "get_all"})
+        
         print("Command sent to Arduino")
 
-        self.arduino.write(command.encode() + b"\n\r")
+        self.arduino.write(b'get_all\n')
         try:
-            data = self.arduino.readline().decode("ascii")
-            return json.loads(data)
-        except Exception as e:
-            print(f"There was an error: {e}")
-            dummy_data = '{"data":{"RTD":"0","pH":"0","EC":"0","DO":"0"}}'
-            return json.loads(dummy_data)
+            data = self.arduino.readline().decode().strip()
+            print(data)
+        except json.JSONDecodeError as json_error:
+            print(f"JSON decode error: {json_error}")
+            self.arduino.close()  # Close the serial port
+            self.__init__()  # Reinitialize the Arduino instance
+            data = '{"data":{"RTD":"0","pH":"0","EC":"0","DO":"0"}}'
+  
+        return json.loads(data)
