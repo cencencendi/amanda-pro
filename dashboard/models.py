@@ -11,3 +11,5 @@ class SensorRecord(models.Model):
     do = models.FloatField(default=0)
     co2 = models.IntegerField(default=0)
     kwh = models.IntegerField(default=0)
+
+

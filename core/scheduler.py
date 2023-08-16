@@ -32,7 +32,7 @@ def start(register):
 
     watering_thread = threading.Thread(target=lambda: watering_plant.check_time(dosing_cycle))
     scheduler.add_job(
-        func=dosing_cycle.dosing_control, trigger="interval", minutes=5, name="dosing control"
+        func=dosing_cycle.dosing_control, trigger="interval", minutes=1, name="dosing control"
     )
     scheduler.add_job(
         func=growlights_control.control, trigger="interval", seconds=1, name="growlights control"

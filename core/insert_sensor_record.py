@@ -34,7 +34,7 @@ class InsertSensorRecord:
     def __init__(self, plc, arduino, thera) -> None:
         self.plc = plc
         self.arduino = arduino
-        self.sensing_time = 30
+        self.sensing_time = 8
         self.thera = thera
         self.recorded_data = []
 

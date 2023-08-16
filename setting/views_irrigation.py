@@ -150,23 +150,23 @@ def manual_irrigation(irrigation_model):
             {'on' if irrigation_model.water_supply_switch else 'off'}!"
     )
 
-    # Turn Water Supply Switch on/off
+    # Turn Sensor Pump Switch on/off
     plc.write_plc(id=3, switch=irrigation_model.sensor_pump_switch)
     print(
-        f"Water Supply Switch is \
+        f"Sensor Pump Switch is \
             {'on' if irrigation_model.sensor_pump_switch else 'off'}!"
     )
 
-    # Turn Water Supply Switch on/off
+    # Turn Plant Pump Switch on/off
     plc.write_plc(id=2, switch=irrigation_model.plant_pump_switch)
     print(
-        f"Water Supply Switch is \
+        f"Plant Pump Switch is \
             {'on' if irrigation_model.plant_pump_switch else 'off'}!"
     )
 
-    # Turn Water Supply Switch on/off
+    # Turn Drain Valve Switch on/off
     plc.write_plc(id=20, switch=irrigation_model.drain_valve_switch)
     print(
-        f"Water Supply Switch is \
+        f"Drain Valve Switch is \
             {'on' if irrigation_model.drain_valve_switch else 'off'}!"
     )

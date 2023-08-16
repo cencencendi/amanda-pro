@@ -51,8 +51,6 @@ class Arduino:
             print(data)
         except json.JSONDecodeError as json_error:
             print(f"JSON decode error: {json_error}")
-            self.arduino.close()  # Close the serial port
-            self.__init__()  # Reinitialize the Arduino instance
             data = '{"data":{"RTD":"0","pH":"0","EC":"0","DO":"0"}}'
   
         return json.loads(data)
